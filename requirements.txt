@@ -1,0 +1,7 @@
+numpy
+requests
+flask
+pillow
+torch
+torchvision
+service-streamer
