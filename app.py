@@ -22,7 +22,7 @@ def predict():
 
 @app.route('/stream_predict', methods=['POST'])
 def stream_predict():
-    print('hello!')
+    print('Stream predicting in progress!!')
     if request.method == 'POST':
         file = request.files['file']
         img_bytes = file.read()

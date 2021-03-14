@@ -7,6 +7,8 @@ import torch.nn as nn
 from torchvision import models
 from torchvision import transforms
 from PIL import Image
+import urllib.request  # the lib that handles the url stuff
+
 
 
 imagenet_class_index = json.load(open('static/imagenet_class_index.json'))
@@ -23,7 +25,10 @@ model_conv = models.resnet18(pretrained=True)
 num_ftrs = model_conv.fc.in_features
 model_conv.fc = nn.Linear(num_ftrs, 20)
 model_conv = model_conv.to(device)
-model_conv.load_state_dict(torch.load("https://monument-monitor-reports.s3.eu-west-2.amazonaws.com/model_6_30e_conv.pt", map_location=torch.device(device)))
+print('hello - just about to try and load the model...')
+
+path = "https://monument-monitor-reports.s3.eu-west-2.amazonaws.com/model_6_30e_conv.pt"
+model_conv.load_state_dict(torch.hub.load_state_dict_from_url(path, map_location=torch.device(device)))
 model_conv.eval()
 
 
