@@ -17,10 +17,10 @@ import os
 ######################################
 
 def create_app(config_filename='./instance/flask.cfg'):
-    app = Flask(__name__, instance_path='/instance')
+    app = Flask(__name__, instance_relative_config=True)
     print(config_filename)
     print(os.path.dirname(os.path.realpath(__file__)))
-    app.config.from_pyfile('./instance/flask.cfg')
+    app.config.from_pyfile('instance/flask.cfg')
 
 
     @app.route('/')
