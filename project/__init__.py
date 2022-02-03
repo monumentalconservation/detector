@@ -16,11 +16,9 @@ import os
 #### Application Factory Function ####
 ######################################
 
-def create_app(config_filename='./instance/flask.cfg'):
+def create_app(config_filename=None):
     app = Flask(__name__, instance_relative_config=True)
-    print(config_filename)
-    print(os.path.dirname(os.path.realpath(__file__)))
-    app.config.from_pyfile('instance/flask.cfg')
+    app.config.from_pyfile('flask.cfg')
 
 
     @app.route('/')
