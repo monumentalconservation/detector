@@ -4,6 +4,6 @@ requests
 flask
 pillow
 gunicorn
-torch==1.10.2
-torchvision==0.11.3
+torch==1.10.2+cpu
+torchvision==0.11.3+cpu
 service-streamer
