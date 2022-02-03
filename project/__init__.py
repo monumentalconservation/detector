@@ -10,7 +10,7 @@ import urllib.request
 
 app = Flask(__name__)
 streamer = ThreadedStreamer(batch_prediction, batch_size=64)
-
+import os
 
 ######################################
 #### Application Factory Function ####
@@ -18,6 +18,8 @@ streamer = ThreadedStreamer(batch_prediction, batch_size=64)
 
 def create_app(config_filename=None):
     app = Flask(__name__, instance_relative_config=True)
+    print(config_filename)
+    print(os.path.dirname(os.path.realpath(__file__)))
     app.config.from_pyfile(config_filename)
 
 
